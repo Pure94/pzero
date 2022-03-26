@@ -1,7 +1,7 @@
-package com.example.pzero.tmdbsniffer.tmdbdatacloner;
+package com.pzero.tmdbsniffer.tmdbdatacloner;
 
-import com.example.pzero.tmdbsniffer.TmdbDataClonerFacade;
-import com.example.pzero.tmdbsniffer.dto.Movie;
+import com.pzero.tmdbsniffer.TmdbDataClonerFacade;
+import com.pzero.tmdbsniffer.dto.Movie;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

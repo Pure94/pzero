@@ -1,4 +1,4 @@
-package com.example.pzero.tmdbsniffer.dto;
+package com.pzero.tmdbsniffer.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

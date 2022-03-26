@@ -1,6 +1,6 @@
-package com.example.pzero.tmdbsniffer.tmdbdatacloner;
+package com.pzero.tmdbsniffer.tmdbdatacloner;
 
-import com.example.pzero.tmdbsniffer.TmdbDataClonerFacade;
+import com.pzero.tmdbsniffer.TmdbDataClonerFacade;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

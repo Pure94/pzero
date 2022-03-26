@@ -1,4 +1,4 @@
-package com.example.pzero.tmdbsniffer;
+package com.pzero.tmdbsniffer;
 
 public interface TmdbDataClonerFacade {
 
