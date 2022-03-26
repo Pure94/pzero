@@ -1,3 +1,39 @@
+buildscript {
+    ext {
+        //Java
+        javaVersion = '11'
+
+        //Spring
+        springBootVersion = '2.6.4'
+
+
+        //DB
+        hibernateVersion = '5.6.1.Final'
+        hibernateValidatorVersion = '6.2.0.Final'
+        hibernateJpaModelgenVersion = '5.5.7.Final'
+        liquibaseVersion = '4.5.0'
+        postgresDriverVersion = '42.2.24'
+        logbackVersion = '1.2.3'
+
+        //Utils
+        lombokVersion = '1.18.20'
+        apacheCommonsVersion = '3.12.0'
+        apacheCommonsCollectionsVersion = '4.4'
+        jacksonDataTypeVersion = '2.13.1'
+        openCsvVersion = '5.5.2'
+        commonsCsvVersion = '1.9.0'
+        swaggerVersion = '2.9.2'
+        nashornVersion = '15.3'
+
+        //Testing
+        jUnit5Version = '5.8.1'
+        assertJVersion = '3.21.0'
+        testContainersVersion = '1.16.2'
+        awaitilityVersion = '4.1.1'
+
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -5,8 +41,8 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+version = '0.0.1'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
@@ -15,25 +51,32 @@ configurations {
 }
 
 repositories {
-    maven { url 'https://repo.spring.io/release' }
     mavenCentral()
 }
 
 dependencies {
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux' , version: '2.6.4'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '2.6.4'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.6.4'
-    compileOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.6.4'
-    testImplementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    runtimeOnly 'org.postgresql:postgresql'
+    //Spring
+    implementation enforcedPlatform(group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: springBootVersion)
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: springBootVersion
+
+
+    //DB
+    implementation group: 'org.postgresql', name: 'postgresql', version: postgresDriverVersion
+    implementation group: 'org.liquibase', name: 'liquibase-core', version: liquibaseVersion
+
+    //lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
+    //TEST
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: jUnit5Version
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: assertJVersion
+    testImplementation group: 'org.testcontainers', name: 'postgresql', version: testContainersVersion
+
 }
 
 tasks.named('test') {

@@ -1,6 +1,7 @@
-package com.example.pzero.dbsniffer;
+package com.example.pzero.tmdbsniffer.tmdbdatacloner;
 
-import com.example.pzero.dbsniffer.dto.Movie;
+import com.example.pzero.tmdbsniffer.TmdbDataClonerFacade;
+import com.example.pzero.tmdbsniffer.dto.Movie;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,10 +12,15 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 
 @Service
-public class MovieDataClonerService {
+class TmdbDataCloner implements TmdbDataClonerFacade {
+
+    private final RestTemplate restTemplate;
+
+    public TmdbDataCloner(final RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     ResponseEntity<String> getResponseFrom(String url) {
-        RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForEntity(url, String.class);
     }
 
@@ -23,9 +29,8 @@ public class MovieDataClonerService {
         return mapper.readValue(response.getBody(), Movie.class);
     }
 
-
     @PostConstruct
-    public void initialize() throws JsonProcessingException {
+    void initialize() throws JsonProcessingException {
         int id = 550;
         ResponseEntity<String> response = getResponseFrom("https://api.themoviedb.org/3/movie/" + id + "?api_key=");
         mapResponseToDto(response);

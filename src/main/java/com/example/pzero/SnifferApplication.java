@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class SpringBootTutorialApplication {
+public class SnifferApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootTutorialApplication.class, args);
+        SpringApplication.run(SnifferApplication.class, args);
     }
 }
