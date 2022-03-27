@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Movie {
+public class MovieTmdbResponse {
 
     @JsonProperty("adult")
     private Boolean adult;
@@ -27,7 +27,7 @@ public class Movie {
     private Double budget;
 
     @JsonProperty("genres")
-    private List<Genre> genres;
+    private List<GenreTmdbResponse> genres;
 
     @JsonProperty("homepage")
     private String homepage;
@@ -70,14 +70,7 @@ public class Movie {
 
     @JsonIgnore
     private UUID uuid;
+
 }
 
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-class Genre {
-    private Integer id;
-    private String name;
-}

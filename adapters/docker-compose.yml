@@ -20,5 +20,4 @@ networks:
   main:
 
 volumes:
-  database_postgres_data:
-  mongo_data:
+  database_data:
