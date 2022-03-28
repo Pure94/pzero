@@ -3,7 +3,6 @@ package com.pzero.tmdbsniffer.tmdbdatapuller;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.FieldNameConstants;
 import utils.models.AbstractEntity;
 
 import javax.persistence.Column;
@@ -15,7 +14,6 @@ import java.time.OffsetDateTime;
 @Setter
 @Entity
 @Table(name = "movie")
-@FieldNameConstants
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 class Movie extends AbstractEntity {
 
@@ -32,10 +30,10 @@ class Movie extends AbstractEntity {
     private String homepage;
 
     @EqualsAndHashCode.Include
-    @Column(name = "tmdb_id", nullable = false)
+    @Column(name = "tmdb_movie_id", nullable = false)
     private String tmdbId;
 
-    @Column(name = "imdb_id")
+    @Column(name = "imdb_movie_id")
     private String imdbId;
 
     @EqualsAndHashCode.Include

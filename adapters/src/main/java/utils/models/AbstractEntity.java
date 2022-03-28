@@ -3,7 +3,6 @@ package utils.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Getter
 @NoArgsConstructor
-@FieldNameConstants
 @ToString
 public abstract class AbstractEntity {
 
@@ -22,4 +20,5 @@ public abstract class AbstractEntity {
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
+
 }
