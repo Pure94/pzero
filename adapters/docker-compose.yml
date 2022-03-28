@@ -2,19 +2,21 @@ version: "3.3"
 
 services:
 
-  database_postgres:
-    image: postgres:14.0-alpine
+  database:
+    build:
+      context: .
+      dockerfile: postgres-Dockerfile
     environment:
       POSTGRES_DB: pzero_db
       POSTGRES_USER: pzero
       POSTGRES_PASSWORD: pzero
       TZ: Europe/Warsaw
     volumes:
-    - database_data:/var/lib/postgresql/data
+      - database_data:/var/lib/postgresql/data
     ports:
-    - "5432:5432"
+      - "5432:5432"
     networks:
-    - main
+      - main
 
 networks:
   main:
