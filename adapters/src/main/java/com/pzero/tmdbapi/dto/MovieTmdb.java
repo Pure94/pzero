@@ -1,21 +1,20 @@
-package com.pzero.tmdbsniffer.dto;
+package com.pzero.tmdbapi.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class MovieTmdbResponse {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+public class MovieTmdb {
 
     @JsonProperty("adult")
     private Boolean adult;
@@ -27,7 +26,7 @@ public class MovieTmdbResponse {
     private Double budget;
 
     @JsonProperty("genres")
-    private List<GenreTmdbResponse> genres;
+    private List<GenreTmdb> genres;
 
     @JsonProperty("homepage")
     private String homepage;
@@ -64,12 +63,6 @@ public class MovieTmdbResponse {
 
     @JsonProperty("overview")
     private String overviewTmdb;
-
-    @JsonIgnore
-    private LocalDate lastTmdbUpdate;
-
-    @JsonIgnore
-    private UUID uuid;
 
 }
 

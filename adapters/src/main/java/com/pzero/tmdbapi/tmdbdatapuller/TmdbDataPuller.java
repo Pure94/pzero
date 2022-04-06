@@ -1,18 +1,20 @@
-package com.pzero.tmdbsniffer.tmdbdatapuller;
+package com.pzero.tmdbapi.tmdbdatapuller;
 
-import com.pzero.tmdbsniffer.TmdbDataClonerFacade;
-import com.pzero.tmdbsniffer.dto.MovieTmdbResponse;
+import com.pzero.tmdbapi.TmdbDataPullerFacade;
+import com.pzero.tmdbapi.dto.MovieTmdb;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
-
 @Service
-class TmdbDataPuller implements TmdbDataClonerFacade {
+class TmdbDataPuller implements TmdbDataPullerFacade {
+
+    @Value("${tmdb.api.get.movie}")
+    private String apiKey;
 
     private final RestTemplate restTemplate;
 
@@ -20,20 +22,13 @@ class TmdbDataPuller implements TmdbDataClonerFacade {
         this.restTemplate = restTemplate;
     }
 
+
     ResponseEntity<String> getResponseFrom(String url) {
         return restTemplate.getForEntity(url, String.class);
     }
 
-    MovieTmdbResponse mapResponseToDto(ResponseEntity<String> response) throws JsonProcessingException {
+    MovieTmdb mapResponseToDto(ResponseEntity<String> response) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return mapper.readValue(response.getBody(), MovieTmdbResponse.class);
-    }
-
-    @PostConstruct
-    void initialize() throws JsonProcessingException {
-        int id = 550;
-        ResponseEntity<String> response = getResponseFrom("https://api.themoviedb.org/3/movie/" + id + "?api_key=");
-        mapResponseToDto(response);
-
+        return mapper.readValue(response.getBody(), MovieTmdb.class);
     }
 }

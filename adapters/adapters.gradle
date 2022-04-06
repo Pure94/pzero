@@ -1,5 +1,7 @@
 buildscript {
     ext {
+
+        apacheCommonsVersion = '3.12.0'
         //Java
         javaVersion = '11'
 
@@ -44,11 +46,14 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
     //Spring
     implementation enforcedPlatform(group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: springBootVersion)
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: springBootVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: springBootVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
 
     //DB

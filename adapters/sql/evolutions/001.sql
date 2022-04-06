@@ -1,5 +1,5 @@
 --liquibase formatted sql
-CREATE TABLE movie
+CREATE TABLE movies
 (
   id                   BIGINT                  PRIMARY KEY,
   backdrop_path        VARCHAR(255),
@@ -20,4 +20,4 @@ CREATE TABLE movie
   adult                BOOLEAN
 );
 
---rollback DROP TABLE movie;
+--rollback DROP TABLE movies;

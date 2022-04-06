@@ -1,4 +1,4 @@
-package com.pzero.tmdbsniffer.dto;
+package com.pzero.tmdbapi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-class GenreTmdbResponse {
+class GenreTmdb {
 
     private Integer id;
     private String name;

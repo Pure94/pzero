@@ -1,4 +1,4 @@
-package com.pzero.tmdbsniffer.tmdbdatapuller;
+package com.pzero.tmdbapi.tmdbdatapuller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

@@ -1,4 +1,4 @@
-package com.pzero.tmdbsniffer.tmdbdatapuller;
+package com.pzero.adapter.dto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "movie")
+@Table(name = "movies")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 class Movie extends AbstractEntity {
 

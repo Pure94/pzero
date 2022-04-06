@@ -1,6 +1,6 @@
-package com.pzero.tmdbsniffer.tmdbdatapuller;
+package com.pzero.tmdbapi.tmdbdatapuller;
 
-import com.pzero.tmdbsniffer.TmdbDataClonerFacade;
+import com.pzero.tmdbapi.TmdbDataPullerFacade;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 class TmdbDataPullerConfiguration {
 
     @Bean
-    TmdbDataClonerFacade tmdbDataCloner(RestTemplate restTemplate) {
+    TmdbDataPullerFacade tmdbDataCloner(RestTemplate restTemplate) {
         return new TmdbDataPuller(restTemplate);
     }
 }

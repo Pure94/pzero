@@ -1,4 +1,4 @@
-package com.pzero.tmdbsniffer.tmdbdatapuller;
+package com.pzero.adapter.dto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
